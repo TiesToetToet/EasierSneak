@@ -38,11 +38,7 @@ public class SneakToggleHandler {
         }
 
         previousKeyPressed = isKeyPressed;
-        previousShiftPressed = isShiftPhysicallyPressed;
-    }
-
-    public static boolean shouldOverrideSneak() {
-        return sneakToggleActive;
+        previousShiftPressed = isShiftPressed;
     }
 
     public static boolean getSneakState() {

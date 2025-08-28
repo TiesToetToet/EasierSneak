@@ -1,7 +1,7 @@
-package com.tiesttoettoet.easier_sneak.mixin.client;
+package com.tiestoettoet.easier_sneak.mixins;
 
-import com.tiesttoettoet.easier_sneak.SneakToggleHandler;
-import net.minecraft.client.input.KeyboardInput;
+import com.tiestoettoet.easier_sneak.client.SneakToggleHandler;
+import net.minecraft.client.player.KeyboardInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,8 +15,8 @@ public class KeyboardInputMixin {
         KeyboardInput self = (KeyboardInput) (Object) this;
 
         // Override the sneak input if our toggle handler is active
-        if (SneakToggleHandler.shouldOverrideSneak()) {
-            self.sneaking = SneakToggleHandler.getSneakState();
+        if (SneakToggleHandler.getSneakState()) {
+            self.shiftKeyDown = SneakToggleHandler.getSneakState();
         }
     }
 }
