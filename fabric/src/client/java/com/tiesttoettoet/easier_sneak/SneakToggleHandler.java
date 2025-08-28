@@ -15,21 +15,7 @@ public class SneakToggleHandler {
             return;
         }
 
-        int keyCode = ModKeybinds.toggleSneakKey.getDefaultKey().getCode();
-        
-        boolean isKeyPressed = false;
-        
-        if (keyCode >= GLFW.GLFW_KEY_A && keyCode <= GLFW.GLFW_KEY_Z) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
-        } else if (keyCode == GLFW.GLFW_KEY_LEFT_CONTROL || keyCode == GLFW.GLFW_KEY_RIGHT_CONTROL) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) == GLFW.GLFW_PRESS ||
-                          GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_CONTROL) == GLFW.GLFW_PRESS;
-        } else if (keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_ALT) == GLFW.GLFW_PRESS ||
-                          GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_ALT) == GLFW.GLFW_PRESS;
-        } else {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
-        }
+        boolean isKeyPressed = ModKeybinds.toggleSneakKey.isPressed();
 
         boolean isShiftPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(),
                 GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
