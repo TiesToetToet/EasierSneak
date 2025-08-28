@@ -1,7 +1,6 @@
 package com.tiestoettoet.easier_sneak;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -19,20 +18,11 @@ import org.slf4j.Logger;
 public class EasierSneak {
 
     public static final String MOD_ID = "easier_sneak";
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public EasierSneak(IEventBus modEventBus, ModContainer modContainer) {
-        onCtor(modEventBus, modContainer);
-    }
-
-    public static void onCtor(IEventBus modEventBus, ModContainer modContainer) {
-        REGISTRATE.registerEventListeners(modEventBus);
-    }
-
-    public static CreateRegistrate registrate() {
-        return REGISTRATE;
+        // Simple mod initialization
+        LOGGER.info("EasierSneak mod initializing...");
     }
 
     public static ResourceLocation asResource(String path) {
