@@ -17,7 +17,7 @@ public class SneakToggleHandler {
 
         int keyCode = ModKeybinds.toggleSneakKey.getDefaultKey().getCode();
 
-        boolean isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;;
+        boolean isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
 
         boolean isSneakPressed = mc.options.sneakKey.isPressed();
 
