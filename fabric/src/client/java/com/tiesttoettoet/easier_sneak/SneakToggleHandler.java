@@ -49,10 +49,6 @@ public class SneakToggleHandler {
         previousShiftPressed = isShiftPressed;
     }
 
-    public static boolean shouldOverrideSneak() {
-        return sneakToggleActive;
-    }
-
     public static boolean getSneakState() {
         return sneakToggleActive;
     }
