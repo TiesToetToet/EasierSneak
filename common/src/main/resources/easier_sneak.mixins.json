@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.mike_ties.easier_sneak.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "KeyboardInputMixin"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

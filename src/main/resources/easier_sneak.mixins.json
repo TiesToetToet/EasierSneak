@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "com.tiestoettoet.easier_sneak.mixins",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [],
-  "client": ["KeyboardInputMixin"],
-  "server": [],
-  "minVersion": "0.8"
-}
