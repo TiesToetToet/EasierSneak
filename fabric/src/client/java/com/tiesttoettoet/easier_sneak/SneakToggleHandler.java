@@ -16,38 +16,23 @@ public class SneakToggleHandler {
         }
 
         int keyCode = ModKeybinds.toggleSneakKey.getDefaultKey().getCode();
-        System.out.println("Toggle Sneak Key Code: " + keyCode);
 
-        boolean isKeyPressed = false;
-        
-        if (keyCode >= GLFW.GLFW_KEY_A && keyCode <= GLFW.GLFW_KEY_Z) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
-        } else if (keyCode == GLFW.GLFW_KEY_LEFT_CONTROL || keyCode == GLFW.GLFW_KEY_RIGHT_CONTROL) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) == GLFW.GLFW_PRESS ||
-                          GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_CONTROL) == GLFW.GLFW_PRESS;
-        } else if (keyCode == GLFW.GLFW_KEY_LEFT_ALT || keyCode == GLFW.GLFW_KEY_RIGHT_ALT) {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_ALT) == GLFW.GLFW_PRESS ||
-                          GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_ALT) == GLFW.GLFW_PRESS;
-        } else {
-            isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
-        }
+        boolean isKeyPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == GLFW.GLFW_PRESS;
 
-        boolean isShiftPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(),
-                GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
-                GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
+        boolean isSneakPressed = mc.options.sneakKey.isPressed();
 
-        boolean comboPressed = isKeyPressed && isShiftPressed;
+        boolean comboPressed = isKeyPressed && isSneakPressed;
         boolean wasComboPressed = previousKeyPressed && previousShiftPressed;
 
         if (comboPressed && !wasComboPressed) {
             sneakToggleActive = !sneakToggleActive;
         }
-        else if (sneakToggleActive && isShiftPressed && !isKeyPressed && !previousShiftPressed) {
+        else if (sneakToggleActive && isSneakPressed && !isKeyPressed && !previousShiftPressed) {
             sneakToggleActive = false;
         }
 
         previousKeyPressed = isKeyPressed;
-        previousShiftPressed = isShiftPressed;
+        previousShiftPressed = isSneakPressed;
     }
 
     public static boolean getSneakState() {
