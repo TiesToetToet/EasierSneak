@@ -24,19 +24,19 @@ public class SneakToggleHandler {
 
         boolean isKeyPressed = ModKeybinds.toggleSneakKey.isDown();
 
-        boolean isShiftPressed = mc.options.keyShift.isDown();
+        boolean isSneakPressed = mc.options.keyShift.isDown();
 
-        boolean comboPressed = isKeyPressed && isShiftPressed;
+        boolean comboPressed = isKeyPressed && isSneakPressed;
         boolean wasComboPressed = previousKeyPressed && previousShiftPressed;
 
         if (comboPressed && !wasComboPressed) {
             sneakToggleActive = !sneakToggleActive;
-        } else if (sneakToggleActive && isShiftPressed && !isKeyPressed && !previousShiftPressed) {
+        } else if (sneakToggleActive && isSneakPressed && !isKeyPressed && !previousShiftPressed) {
             sneakToggleActive = false;
         }
 
         previousKeyPressed = isKeyPressed;
-        previousShiftPressed = isShiftPressed;
+        previousShiftPressed = isSneakPressed;
     }
 
     public static boolean getSneakState() {
