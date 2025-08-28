@@ -6,9 +6,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 public class EasierSneakClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        EasierSneak.LOGGER.info("EasierSneak client is starting up!");
-        
-        // Register the client tick handler
+        ModKeybinds.registerKeyBindings();
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             SneakToggleHandler.onClientTick();
         });
