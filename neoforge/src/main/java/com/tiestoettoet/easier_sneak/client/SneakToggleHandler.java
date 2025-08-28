@@ -24,21 +24,19 @@ public class SneakToggleHandler {
 
         boolean isKeyPressed = ModKeybinds.toggleSneakKey.isDown();
 
-        boolean isShiftPressed = GLFW.glfwGetKey(mc.getWindow().getWindow(),
-                GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
-                GLFW.glfwGetKey(mc.getWindow().getWindow(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
+        boolean isSneakPressed = mc.options.keyShift.isDown();
 
-        boolean comboPressed = isKeyPressed && isShiftPressed;
+        boolean comboPressed = isKeyPressed && isSneakPressed;
         boolean wasComboPressed = previousKeyPressed && previousShiftPressed;
 
         if (comboPressed && !wasComboPressed) {
             sneakToggleActive = !sneakToggleActive;
-        } else if (sneakToggleActive && isShiftPressed && !isKeyPressed && !previousShiftPressed) {
+        } else if (sneakToggleActive && isSneakPressed && !isKeyPressed && !previousShiftPressed) {
             sneakToggleActive = false;
         }
 
         previousKeyPressed = isKeyPressed;
-        previousShiftPressed = isShiftPressed;
+        previousShiftPressed = isSneakPressed;
     }
 
     public static boolean getSneakState() {
