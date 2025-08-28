@@ -1,7 +1,6 @@
 package com.tiesttoettoet.easier_sneak;
 
 import net.minecraft.client.MinecraftClient;
-import org.lwjgl.glfw.GLFW;
 
 public class SneakToggleHandler {
 
@@ -17,22 +16,20 @@ public class SneakToggleHandler {
 
         boolean isKeyPressed = ModKeybinds.toggleSneakKey.isPressed();
 
-        boolean isShiftPressed = GLFW.glfwGetKey(mc.getWindow().getHandle(),
-                GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
-                GLFW.glfwGetKey(mc.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
+        boolean isSneakPressed = mc.options.sneakKey.isPressed();
 
-        boolean comboPressed = isKeyPressed && isShiftPressed;
+        boolean comboPressed = isKeyPressed && isSneakPressed;
         boolean wasComboPressed = previousKeyPressed && previousShiftPressed;
 
         if (comboPressed && !wasComboPressed) {
             sneakToggleActive = !sneakToggleActive;
         }
-        else if (sneakToggleActive && isShiftPressed && !isKeyPressed && !previousShiftPressed) {
+        else if (sneakToggleActive && isSneakPressed && !isKeyPressed && !previousShiftPressed) {
             sneakToggleActive = false;
         }
 
         previousKeyPressed = isKeyPressed;
-        previousShiftPressed = isShiftPressed;
+        previousShiftPressed = isSneakPressed;
     }
 
     public static boolean getSneakState() {
